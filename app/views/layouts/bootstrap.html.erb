@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%= render 'layouts/head' %>	
+</head>
+<body>
+	<div class="container">
+		<% if flash[:noticia] %>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-2">
+					<div class="alert alert-warning" role="alert">
+						<button type="button" class="close" data-dismiss="alert">
+						  <span aria-hidden="true">&times;</span>
+						  <span class="sr-only">Close</span>
+						</button>
+					 	<%= flash[:noticia] %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+		<!-- Cabecera -->
+		<%= render 'layouts/cabecera' %>	
+		<!-- Fin Cabecera -->
+		<!-- Intro -->
+		<% if hay_banner? %>
+			<%= yield :imagen %>
+		<% else %>
+			<%= render 'layouts/intro' %>
+		<% end %>
+		<!-- Fin Intro -->
+		<!-- Columnas Servicios Destacados -->
+		<%= render 'layouts/servicios_destacados' %>
+		<!-- Fin Servicios Destacados -->
+
+		<!-- Contenido plantilla -->
+		<div class="row">
+			<div class="col-md-12">
+				<%= yield %>
+			</div>
+		</div>	
+		<!-- Fin de Contenido plantilla -->
+	</div>
+</body>
+</html>
